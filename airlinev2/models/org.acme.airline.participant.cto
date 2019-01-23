@@ -1,0 +1,31 @@
+namespace org.acme.airline.participant 
+
+abstract participant ACMEParticipant identified by participantKey{        // It is not necessary abstract keyword                                                                              // be used to extend 
+  o String participantKey
+  o Contact contact
+}
+
+
+//concept is used as generic classes. It does not represent resource EG: An address cocept
+//Instances of concept are contained ti resource classes
+
+concept Contact{
+  o String fName
+  o String lName
+  o String email
+}
+
+participant ACMENetworkAdmin extends ACMEParticipant {
+}
+
+participant ACMEPersonnel extends ACMEParticipant{
+  o String department
+}
+
+participant B2BPartner extends ACMEParticipant{
+}
+
+// here we see how the modelling language supports object orientation
+// supports resource abstraction
+// supports inheritance, resource type should not change
+// concept = generic classes
