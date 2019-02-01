@@ -1,0 +1,32 @@
+
+rule NetworkControlPermission {
+  description: "Gives admin all access to system resources"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.hyperledger.composer.system.*"
+  action: ALLOW
+}
+
+rule ParticipantRegistryControl {
+  description: "give admin all access to ACME participant types"
+  participant: "org.hyperledger.composer.system.NetworkAdmin"
+  operation: ALL
+  resource: "org.acme.airline.participant.*"
+  action: ALLOW
+}
+
+rule ACMENetworkAdminPermissionSystem {
+  description: "gives participants access to read system resources"
+  participant: "ANY"
+  operation: READ
+  resource: "org.hyperledger.composer.system.**"
+  action: ALLOW
+}  
+
+rule ACMENetworkAdminPermissionACME {
+  description: "gives Acme network admin permissions to read acme resources"
+  participant: "org.acme.airline.participant.ACMENetworkAdmin"
+  operation: READ
+  resource: "org.acme.airline.**"
+  action: ALLOW
+}
